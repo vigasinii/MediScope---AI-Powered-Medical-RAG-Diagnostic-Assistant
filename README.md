@@ -98,4 +98,9 @@ Diagnostic Assistant Testing:
 
 ![image](https://github.com/user-attachments/assets/9f637a1b-38ad-4799-a1e9-fddb62430d8a)
 
+![Screenshot 2025-02-26 110424](https://github.com/user-attachments/assets/00e0ad54-f012-4ba8-a708-7fd426913495)
+
+![Screenshot 2025-02-26 111600](https://github.com/user-attachments/assets/848efac8-c71b-40f3-865f-374a47a2579d)
+
+![Screenshot 2025-02-26 111626](https://github.com/user-attachments/assets/1aa5f3b4-6978-4935-8bc7-396d962fe3b5)
 

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MediScope's</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #0D1117;
+            font-family: 'Inter', sans-serif;
+            color: #E6EDF3;
+            text-align: center;
+        }
+        .chat-container {
+            max-width: 700px;
+            margin: 80px auto;
+            padding: 20px;
+            background: #161B22;
+            border-radius: 15px;
+            box-shadow: 0px 0px 12px rgba(0, 255, 255, 0.15);
+        }
+        .chat-title {
+            font-size: 2.5em;
+            font-weight: 600;
+            color: #00DDFF;
+            text-shadow: 0 0 6px #00DDFF, 0 0 12px #0095CC, 0 0 18px rgba(0, 153, 255, 0.6);
+            margin-bottom: 10px;
+        }
+        .chat-subtitle {
+            font-size: 1.5em;
+            font-weight: 400;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .chat-input {
+            background: #21262D;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            padding: 15px;
+            font-size: 1em;
+            resize: none;
+            height: 100px;
+        }
+        .chat-button {
+            background: linear-gradient(90deg, #00DDFF, #0095CC);
+            color: black;
+            font-weight: bold;
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            font-size: 1em;
+            transition: 0.3s;
+            width: 100%;
+        }
+        .chat-button:hover {
+            background: linear-gradient(90deg, #0095CC, #0066AA);
+        }
+        .chat-response {
+            background: #21262D;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-size: 1em;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out;
+        }
+        pre {
+            white-space: pre-wrap;
+            font-size: 0.9em;
+            color: #E6EDF3;
+            text-align: left;
+        }
+        .fade-in {
+            display: block !important;
+            opacity: 1 !important;
+        }
+    </style>
+</head>
+<body>
+    <div class="container chat-container">
+        <h1 class="chat-title"> 💡 MediScope's</h1>
+        <h3 class="chat-subtitle">Medical RAG</h3>
+
+        <div class="row">
+            <div class="col">
+                <textarea id="userInput" class="form-control chat-input" placeholder="Type your question here..."></textarea>
+                <button id="submitBtn" class="btn chat-button mt-3">🔍 Ask AI</button>
+                <div id="response" class="chat-response"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const userInput = document.getElementById('userInput');
+        const responseDiv = document.getElementById('response');
+        const submitBtn = document.getElementById('submitBtn');
+
+        // Show "Processing..." after the user starts typing
+        userInput.addEventListener('input', function() {
+            if (userInput.value.trim() !== "") {
+                responseDiv.innerHTML = '<p style="color: yellow;">⏳ Processing...</p>';
+                responseDiv.style.display = "block";
+            } else {
+                responseDiv.style.display = "none";  // Hide when input is cleared
+            }
+        });
+
+        submitBtn.addEventListener('click', async function() {
+            var query = userInput.value.trim();
+
+            if (query === "") {
+                alert("Please enter a question before submitting.");
+                return;
+            }
+
+            responseDiv.innerHTML = '<p style="color: yellow;">⏳ Processing your request...</p>';
+            responseDiv.style.display = "block";
+            responseDiv.classList.remove("fade-in");
+
+            const formData = new FormData();
+            formData.append('query', query);
+
+            try {
+                const response = await fetch('/get_response', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                responseDiv.innerHTML = `
+                    <p><b>AI Answer:</b> ${data.answer}</p>
+                    <pre><b>Context:</b> ${data.source_document}</pre>
+                    <pre><b>Source Document:</b> ${data.doc}</pre>
+                `;
+
+                responseDiv.classList.add("fade-in");
+
+            } catch (error) {
+                console.error('Error:', error);
+                responseDiv.innerHTML = '<p style="color:red;">❌ Error processing your request. Please try again.</p>';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -89,6 +89,9 @@ api_key = "YOUR_API_KEY"
 This tool provides AI-generated insights but **is not a replacement for professional medical advice**. Always consult a healthcare professional for medical decisions.
 
 ##Testing
+Home: 
+![image](https://github.com/user-attachments/assets/3d60d69f-9bf3-4f46-a213-47369e63adf3)
+
 Diagnostic Assistant Testing:
 
 ![WhatsApp Image 2025-02-26 at 10 45 03_ef3c1cf7](https://github.com/user-attachments/assets/d1bc23b5-9b40-4e53-be89-72a49607b95d)

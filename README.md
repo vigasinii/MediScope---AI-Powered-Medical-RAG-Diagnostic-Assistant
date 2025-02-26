@@ -50,6 +50,8 @@ Ensure you have the following installed:
    ```sh
    docker run -d --name qdrant -p 6333:6333 qdrant/qdrant
    ```
+4. Download Meditron 
+https://huggingface.co/TheBloke/meditron-7B-GGUF/blob/main/meditron-7b.Q4_K_M.gguf
 
 ## Usage
 ### Running the Application

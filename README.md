@@ -63,6 +63,7 @@ python ingest.py
 
 # 2️⃣ Start the FastAPI RAG Backend  
 uvicorn rag:app --reload --host 127.0.0.1 --port 8000  
+This may take about 2-3 to show up after the query is given, please do not refresh
 
 # 3️⃣ Run the Streamlit App  
 streamlit run app.py  
@@ -87,6 +88,11 @@ api_key = "YOUR_API_KEY"
 ## Disclaimer
 This tool provides AI-generated insights but **is not a replacement for professional medical advice**. Always consult a healthcare professional for medical decisions.
 
-## License
-This project is open-source. Feel free to modify and extend it.
+##Testing
+Diagnostic Assistant Testing:
+
+![WhatsApp Image 2025-02-26 at 10 45 03_ef3c1cf7](https://github.com/user-attachments/assets/d1bc23b5-9b40-4e53-be89-72a49607b95d)
+
+![image](https://github.com/user-attachments/assets/9f637a1b-38ad-4799-a1e9-fddb62430d8a)
+
 

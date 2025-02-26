@@ -55,18 +55,22 @@ https://huggingface.co/TheBloke/meditron-7B-GGUF/blob/main/meditron-7b.Q4_K_M.gg
 
 ## Usage
 ### Running the Application
-1. **Start the FastAPI RAG Backend**
-   ```sh
-   uvicorn rag:app --reload --host 127.0.0.1 --port 8000
-   ```
-2. **Run the Streamlit App**
-   ```sh
-   streamlit run app.py
-   ```
-3. **Upload Medical Files**
-   - Navigate to the web interface
-   - Upload images or PDFs for AI analysis
-   - Ask AI-powered medical questions
+**Note:** Each component must be run in a **separate terminal** in the following order.
+
+```sh
+# 1️⃣ Run the Ingestion Pipeline  
+python ingest.py  
+
+# 2️⃣ Start the FastAPI RAG Backend  
+uvicorn rag:app --reload --host 127.0.0.1 --port 8000  
+
+# 3️⃣ Run the Streamlit App  
+streamlit run app.py  
+
+# 4️⃣ Start the Home Page  
+streamlit run home.py
+
+
 
 ## Configuration
 Edit `config.py` to update the API key for Google Generative AI if required:

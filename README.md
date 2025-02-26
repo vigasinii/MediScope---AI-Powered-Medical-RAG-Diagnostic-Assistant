@@ -88,7 +88,7 @@ api_key = "YOUR_API_KEY"
 ## Disclaimer
 This tool provides AI-generated insights but **is not a replacement for professional medical advice**. Always consult a healthcare professional for medical decisions.
 
-##Testing
+## Testing
 Home: 
 ![image](https://github.com/user-attachments/assets/3d60d69f-9bf3-4f46-a213-47369e63adf3)
 
